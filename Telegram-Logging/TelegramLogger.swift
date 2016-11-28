@@ -20,6 +20,7 @@ class TLLogger {
         self.api_url = ""
     }
     
+    
     func setup(BOT_KEY : String, CHAT_ID : String) {
         if !BOT_KEY.isEmpty {
             self.api_key = BOT_KEY
