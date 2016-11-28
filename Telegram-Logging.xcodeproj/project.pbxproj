@@ -11,6 +11,7 @@
 		E483C4651DEBAB5100AA2264 /* Telegram_LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483C4641DEBAB5100AA2264 /* Telegram_LoggingTests.swift */; };
 		E483C4671DEBAB5100AA2264 /* Telegram-Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = E483C4591DEBAB5100AA2264 /* Telegram-Logging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E483C4711DEBAB6C00AA2264 /* TelegramLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483C4701DEBAB6C00AA2264 /* TelegramLogger.swift */; };
+		E4DEF1B81DECC509004B01C7 /* TLLFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DEF1B71DECC509004B01C7 /* TLLFunc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		E483C4641DEBAB5100AA2264 /* Telegram_LoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_LoggingTests.swift; sourceTree = "<group>"; };
 		E483C4661DEBAB5100AA2264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E483C4701DEBAB6C00AA2264 /* TelegramLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelegramLogger.swift; sourceTree = "<group>"; };
+		E4DEF1B71DECC509004B01C7 /* TLLFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLLFunc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				E483C4591DEBAB5100AA2264 /* Telegram-Logging.h */,
 				E483C45A1DEBAB5100AA2264 /* Info.plist */,
 				E483C4701DEBAB6C00AA2264 /* TelegramLogger.swift */,
+				E4DEF1B71DECC509004B01C7 /* TLLFunc.swift */,
 			);
 			path = "Telegram-Logging";
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4DEF1B81DECC509004B01C7 /* TLLFunc.swift in Sources */,
 				E483C4711DEBAB6C00AA2264 /* TelegramLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +408,7 @@
 				E483C46C1DEBAB5100AA2264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E483C46D1DEBAB5100AA2264 /* Build configuration list for PBXNativeTarget "Telegram-LoggingTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +417,7 @@
 				E483C46F1DEBAB5100AA2264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

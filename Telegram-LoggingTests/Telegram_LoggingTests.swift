@@ -10,13 +10,16 @@ import XCTest
 @testable import TLLogger
 
 class Telegram_LoggingTests: XCTestCase {
+    fileprivate struct WaitData {
+        static var waitExpectation: XCTestExpectation?
+    }
     
     var tl : TLLogger!
     
     override func setUp() {
         super.setUp()
         
-        tl = TLLogger()
+        tl = TLLogger(Debugging : true)
     }
     
     override func tearDown() {
@@ -28,7 +31,8 @@ class Telegram_LoggingTests: XCTestCase {
         
         tl.setup(BOT_KEY: "190675481:AAHAHAMUS8UjwUPow-rx_sGfDbLGz-Xu-rY",CHAT_ID: "124858558")
         tl.log("heey")
-        tl.reportNewDownload()
+        tl.reportNewDownload(true)
+        waitForDuration(15)
         
     }
     
@@ -38,5 +42,18 @@ class Telegram_LoggingTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    public func waitForDuration(_ duration: TimeInterval) {
+        WaitData.waitExpectation = expectation(description: "wait")
+        Timer.scheduledTimer(timeInterval: duration, target: self,
+                             selector: #selector(waitForDurationDone), userInfo: nil, repeats: false)
+        waitForExpectations(timeout: duration + 3, handler: nil)
+    }
+    
+    func waitForDurationDone() {
+        WaitData.waitExpectation?.fulfill()
+    }
+    
+    
     
 }

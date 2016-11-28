@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E483C4551DEBAB5100AA2264"
-               BuildableName = "Telegram-Logging.framework"
+               BuildableName = "TLLogger.framework"
                BlueprintName = "Telegram-Logging"
                ReferencedContainer = "container:Telegram-Logging.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E483C4551DEBAB5100AA2264"
-            BuildableName = "Telegram-Logging.framework"
+            BuildableName = "TLLogger.framework"
             BlueprintName = "Telegram-Logging"
             ReferencedContainer = "container:Telegram-Logging.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E483C4551DEBAB5100AA2264"
-            BuildableName = "Telegram-Logging.framework"
+            BuildableName = "TLLogger.framework"
             BlueprintName = "Telegram-Logging"
             ReferencedContainer = "container:Telegram-Logging.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E483C4551DEBAB5100AA2264"
-            BuildableName = "Telegram-Logging.framework"
+            BuildableName = "TLLogger.framework"
             BlueprintName = "Telegram-Logging"
             ReferencedContainer = "container:Telegram-Logging.xcodeproj">
          </BuildableReference>
