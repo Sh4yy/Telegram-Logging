@@ -52,8 +52,6 @@ class TLLogger {
     }
     
     
-    
-    
     func log(_ text : String){
         sendMessage("🤖 \(text)")
     }
@@ -66,9 +64,9 @@ class TLLogger {
     }
     
     func reportNewDownload(){
-        if UserDefaults.standard.value(forKey: "didOpen") == nil {
+        if UserDefaults.standard.value(forKey: "TLLDidOpen") == nil {
             if self.didSetup {
-                UserDefaults.standard.set(true, forKey: "didOpen")
+                UserDefaults.standard.set(true, forKey: "TLLDidOpen")
                 sendMessage("🎈 New Download")
             }
         }
@@ -81,7 +79,6 @@ class TLLogger {
         session.resume()
         // sleep(4)
         }
-
     }
 
 
