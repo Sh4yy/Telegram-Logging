@@ -7,13 +7,16 @@
 //
 
 import XCTest
-@testable import Telegram_Logging
+@testable import TLLogger
 
 class Telegram_LoggingTests: XCTestCase {
     
+    var tl : TLLogger!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        tl = TLLogger()
     }
     
     override func tearDown() {

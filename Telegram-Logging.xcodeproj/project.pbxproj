@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E483C4601DEBAB5100AA2264 /* Telegram-Logging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E483C4561DEBAB5100AA2264 /* Telegram-Logging.framework */; };
+		E483C4601DEBAB5100AA2264 /* TLLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E483C4561DEBAB5100AA2264 /* TLLogger.framework */; };
 		E483C4651DEBAB5100AA2264 /* Telegram_LoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483C4641DEBAB5100AA2264 /* Telegram_LoggingTests.swift */; };
 		E483C4671DEBAB5100AA2264 /* Telegram-Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = E483C4591DEBAB5100AA2264 /* Telegram-Logging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E483C4711DEBAB6C00AA2264 /* TelegramLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E483C4701DEBAB6C00AA2264 /* TelegramLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +24,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E483C4561DEBAB5100AA2264 /* Telegram-Logging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Telegram-Logging.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E483C4561DEBAB5100AA2264 /* TLLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TLLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E483C4591DEBAB5100AA2264 /* Telegram-Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Telegram-Logging.h"; sourceTree = "<group>"; };
 		E483C45A1DEBAB5100AA2264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E483C45F1DEBAB5100AA2264 /* Telegram-LoggingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Telegram-LoggingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E483C4641DEBAB5100AA2264 /* Telegram_LoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_LoggingTests.swift; sourceTree = "<group>"; };
 		E483C4661DEBAB5100AA2264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E483C4701DEBAB6C00AA2264 /* TelegramLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelegramLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E483C4601DEBAB5100AA2264 /* Telegram-Logging.framework in Frameworks */,
+				E483C4601DEBAB5100AA2264 /* TLLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +64,7 @@
 		E483C4571DEBAB5100AA2264 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E483C4561DEBAB5100AA2264 /* Telegram-Logging.framework */,
+				E483C4561DEBAB5100AA2264 /* TLLogger.framework */,
 				E483C45F1DEBAB5100AA2264 /* Telegram-LoggingTests.xctest */,
 			);
 			name = Products;
@@ -73,6 +75,7 @@
 			children = (
 				E483C4591DEBAB5100AA2264 /* Telegram-Logging.h */,
 				E483C45A1DEBAB5100AA2264 /* Info.plist */,
+				E483C4701DEBAB6C00AA2264 /* TelegramLogger.swift */,
 			);
 			path = "Telegram-Logging";
 			sourceTree = "<group>";
@@ -115,7 +118,7 @@
 			);
 			name = "Telegram-Logging";
 			productName = "Telegram-Logging";
-			productReference = E483C4561DEBAB5100AA2264 /* Telegram-Logging.framework */;
+			productReference = E483C4561DEBAB5100AA2264 /* TLLogger.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E483C45E1DEBAB5100AA2264 /* Telegram-LoggingTests */ = {
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					E483C4551DEBAB5100AA2264 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					E483C45E1DEBAB5100AA2264 = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E483C4711DEBAB6C00AA2264 /* TelegramLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +325,7 @@
 		E483C46B1DEBAB5100AA2264 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -328,9 +334,10 @@
 				INFOPLIST_FILE = "Telegram-Logging/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.Shayy.Telegram-Logging";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.Shayy.TelegramLogging;
+				PRODUCT_NAME = TLLogger;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +345,7 @@
 		E483C46C1DEBAB5100AA2264 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -346,8 +354,8 @@
 				INFOPLIST_FILE = "Telegram-Logging/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.Shayy.Telegram-Logging";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.Shayy.TelegramLogging;
+				PRODUCT_NAME = TLLogger;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -356,6 +364,7 @@
 		E483C46E1DEBAB5100AA2264 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Telegram-LoggingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.Shayy.Telegram-LoggingTests";
@@ -367,6 +376,7 @@
 		E483C46F1DEBAB5100AA2264 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Telegram-LoggingTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.Shayy.Telegram-LoggingTests";
