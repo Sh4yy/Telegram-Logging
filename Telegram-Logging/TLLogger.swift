@@ -36,8 +36,11 @@ public class TLLogger {
                             
                             if let ok = json["ok"] as? NSNumber, ok == 1, let result = json["result"] as? Dictionary<String,AnyObject>{
                                 
-                                if let name = result["username"] as? String {
-                                print("TLLogger Has been activated. \n Bot's username: \(name)")
+                                if let name = result["username"] as? String, self.debugger {
+                                print("TLLogger has been activated. \n Bot's username: \(name)")
+                                    if (self.debugger) {
+                                        self.sendMessage("✚ New Session Started")
+                                    }
                                 }
                             }
                         }
