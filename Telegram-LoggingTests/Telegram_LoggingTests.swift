@@ -25,8 +25,11 @@ class Telegram_LoggingTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        tl.setup(BOT_KEY: "190675481:AAHAHAMUS8UjwUPow-rx_sGfDbLGz-Xu-rY",CHAT_ID: "124858558")
+        tl.log("heey")
+        tl.reportNewDownload()
+        
     }
     
     func testPerformanceExample() {
