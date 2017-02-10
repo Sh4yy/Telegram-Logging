@@ -19,7 +19,7 @@ class Telegram_LoggingTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        tl = TLLogger(Debugging: true, token: "token goes here", chat_id: "your chat id goes here")
+        tl = TLLogger(Debugging: true, token: "your bot's token goes here", chat_id: "your chat id goes here")
         
     }
     
@@ -29,10 +29,11 @@ class Telegram_LoggingTests: XCTestCase {
     
     func testExample() {
         
-        tl.log("Heey this is a message", .message)
-        tl.log("this is a low memory warning", .warning)
-        tl.log("this is a custom log", .custom("😅"))
+        tl.log("Heey this is a message", condition: .message)
+        tl.log("this is a low memory warning", condition: .warning)
+        tl.log("this is a custom log", condition: .custom("😅"))
         tl.log("this is a simple log")
+        tl.log("this is just a test", to: "a different chat id goes here")
         waitForDuration(15)
         
     }

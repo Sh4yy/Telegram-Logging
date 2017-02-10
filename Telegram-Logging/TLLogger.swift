@@ -35,14 +35,18 @@ open class TLLogger {
         return debugger
     }
     
-    public func log(_ text : String, _ condition : conditions = .none){
+    public func log(_ text : String, condition : conditions = .none, to to_chat_id : String? = nil){
         var str_condition = ""
         if let temp_condition = self.getCondition(condition: condition) {
             str_condition = "\(temp_condition) "
         }
-        let path = "/sendMessage?chat_id=\(self.chat_id!)&text=\(str_condition + text)"
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        sendRequest(path: path!)
+        
+        guard let encoded_text = (str_condition + text).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        
+        let path = "/sendMessage?chat_id=\(to_chat_id ?? self.chat_id! )&text=\(encoded_text)"
+        sendRequest(path: path)
     }
     
     private func sendRequest(path : String) {
