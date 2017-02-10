@@ -19,19 +19,20 @@ class Telegram_LoggingTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        tl = TLLogger(Debugging : true)
+        tl = TLLogger(Debugging: true, token: "token goes here", chat_id: "your chat id goes here")
+        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
     func testExample() {
         
-        tl.setup(BOT_KEY: "190675481:AAHAHAMUS8UjwUPow-rx_sGfDbLGz-Xu-rY",CHAT_ID: "124858558")
-        tl.log("heey")
-        tl.reportNewDownload(true)
+        tl.log("Heey this is a message", .message)
+        tl.log("this is a low memory warning", .warning)
+        tl.log("this is a custom log", .custom("😅"))
+        tl.log("this is a simple log")
         waitForDuration(15)
         
     }

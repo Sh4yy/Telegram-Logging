@@ -7,104 +7,83 @@
 
 import Foundation
 
-public class TLLogger {
+open class TLLogger {
     
+    private var api_url = "https://api.telegram.org/"
     private var api_key : String!
-    private var api_url : String!
     private var chat_id : String!
     private var debugger = false
     
-    public init(Debugging : Bool) {
-        self.api_key = ""
-        self.api_url = ""
+    private var route : String? {
+        get {
+            if !debugger {return nil}
+            return self.api_url + "bot" + self.api_key
+        }
+    }
+    
+    public init(Debugging : Bool = true, token : String, chat_id : String) {
+        self.api_key = token
+        self.chat_id = chat_id
         self.debugger = Debugging
     }
     
-    public func setup(BOT_KEY : String, CHAT_ID : String) {
-        if !BOT_KEY.isEmpty {
-            self.api_key = BOT_KEY
-            self.chat_id = CHAT_ID
-            
-            self.api_url = "https://api.telegram.org/bot\(self.api_key!)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            let path = "/getMe"
-            let url = URL(string: self.api_url + path as String)
-            let request = URLRequest(url: url!)
-            let session = URLSession.shared.dataTask(with: request, completionHandler: { (Data, URLResponse, Error) in
-                if Error == nil {
-                    do {
-                        if let json = try JSONSerialization.jsonObject(with: Data!, options: .allowFragments) as? [String:AnyObject] {
-                            
-                            if let ok = json["ok"] as? NSNumber, ok == 1, let result = json["result"] as? Dictionary<String,AnyObject>{
-                                
-                                if let name = result["username"] as? String, self.debugger {
-                                print("TLLogger has been activated. \n Bot's username: \(name)")
-                                    if (self.debugger) {
-                                        self.sendMessage("✚ New Session Started")
-                                    }
-                                }
-                            }
-                        }
-                    } catch {
-                        print("json error")
-                    }
-                } else {
-                    print("\(self.api_url)")
-                }
-            })
-            session.resume()
+    @discardableResult
+    public func isDebugging(_ debugging : Bool? = nil) -> Bool {
+        if let flag = debugging {
+            self.debugger = flag
         }
+        return debugger
     }
     
-    public func log(_ text : String){
-        if (debugger) {
-        sendMessage("🤖 \(text)")
+    public func log(_ text : String, _ condition : conditions = .none){
+        var str_condition = ""
+        if let temp_condition = self.getCondition(condition: condition) {
+            str_condition = "\(temp_condition) "
         }
-    }
-    
-    private func sendMessage(_ text : String){
-            let path = "/sendMessage?chat_id=\(self.chat_id!)&text=\(text)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            sendRequest(path: path!)
-    }
-    
-    public func reportNewDownload(_ reportLocation : Bool = false, _ text : String = "🎈 New Download"){
-        if UserDefaults.standard.value(forKey: "TLLDidOpen") == nil {
-                if reportLocation {
-                    getLocation()
-                } else {
-                UserDefaults.standard.set(true, forKey: "TLLDidOpen")
-                sendMessage(text)
-            }
-        }
-    }
-    
-    private func getLocation() {
-        let url = URL(string : "http://ip-api.com/json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-        print(url!)
-        let request = URLRequest(url : url!)
-        let session = URLSession.shared.dataTask(with : request, completionHandler : {
-        (Data, URLResponse, Error) in
-        if Error == nil {
-            do {
-                if let json = try JSONSerialization.jsonObject(with  : Data!, options: .allowFragments) as? [String : AnyObject] {
-                    if let city = json["city"] as? String, let country = json["country"] as? String {
-                        self.reportNewDownload(false,"🎈 New Download From \(country), \(city)")
-                    }
-                }
-            } catch {
-                print("JSONSerialization Error")
-                }
-        } else {
-            print("error")
-            }
-        })
-        session.resume()
+        let path = "/sendMessage?chat_id=\(self.chat_id!)&text=\(str_condition + text)"
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        sendRequest(path: path!)
     }
     
     private func sendRequest(path : String) {
-        let url = URL(string: self.api_url + path as String)
-        let request = URLRequest(url: url!)
+        guard let tempRoute = self.route else {
+            return
+        }
+        
+        let strURL = tempRoute + path
+        
+        guard let url = URL(string: strURL) else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
         let session = URLSession.shared.dataTask(with: request)
         session.resume()
         
     }
+    
+    public enum conditions {
+        case warning, error, message, newUser, log, none
+        case custom(Character)
+    }
+    
+    private func getCondition(condition : conditions) -> Character? {
+        switch condition {
+        case .custom(let chr) :
+            return chr
+        case .log :
+            return "🤖"
+        case .error :
+            return "😱"
+        case .message :
+            return "💬"
+        case .warning :
+            return "⚠️"
+        case .newUser :
+            return "🎉"
+        case .none :
+            return nil
+        }
+    }
+    
 }
